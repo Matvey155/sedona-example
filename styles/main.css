@@ -26,7 +26,7 @@
     --color-blue: #82B3D3;
     --color-blue-2: rgba(131, 179, 211, 0.2);
     --color-blue-3: rgba(131, 179, 211, 0.12);
-    
+    --color-blue-4: #3F5E72;
 
     --color-gray: #F2F2F2;
     --color-gray-2: rgba(0, 0, 0, 0.3);
@@ -159,6 +159,10 @@ svg * {
     background-color: var(--color-blue);
 }
 
+.input {
+    position: relative;
+}
+
 .input-control {
     height: 52px;
     padding-left: 20px;
@@ -181,11 +185,80 @@ svg * {
 .input-control:focus::placeholder {
     color: var(--color-gray);
 }
+
+.input-suffix {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    color: var(--color-gray-2);
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.input-suffix ~ .input-control {
+    padding-right: 44px;
+}
  
 
 .input-control::placeholder {
     color: var(--color-dark-gray);
 }
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+    cursor: pointer;
+}
+
+.checkbox:hover .checkbox-emulator {
+    background-color: var(--color-blue);
+}
+.checkbox:hover .checkbox-label {
+    color: var(--color-blue);
+}
+
+.checkbox-control:not(:checked) + .checkbox-emulator .checkbox-icon,
+.checkbox-radio .checkbox-control:not(:checked) + .checkbox-emulator::after {
+    display: none;
+}
+
+.checkbox-emulator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    background-color: var(---color-light);
+    border-radius: 4px;
+}
+
+.checkbox-emulator,
+.checkbox-label {
+    transition: 0.2s;
+}
+
+.checkbox-label {
+    user-select: none;
+}
+
+.checkbox-radio .checkbox-emulator {
+    position: relative;
+    border-radius: 50%;
+}
+
+.checkbox-radio .checkbox-emulator::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    background-color: var(--color-blue-4);
+    border-radius: 50%;
+}
+
 
 .logo:hover {
     opacity: 0.75;
@@ -497,6 +570,10 @@ svg * {
     background: url(../images/mountain.jpg) center/cover no-repeat;
 }
 
+.page-header-breadcrumbs {
+    margin-bottom: 40px;
+}
+
 .page-title {
     margin-bottom: 8px;
 }
@@ -547,4 +624,95 @@ svg * {
 
 .breadcrumbs-link:hover svg * {
    fill: var(--color-blue);
+}
+
+.catalog-filters {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 140px;
+}
+
+.catalog-filters-title {
+    margin-bottom: 32px;
+}
+
+.catalog-filters-options,
+.catalog-filters-extra { 
+    display: flex;
+    column-gap: 70px;
+}
+
+.catalog-filters-items {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+.price-selection-inputs {
+    display: flex;
+    column-gap: 2px;
+}
+
+.price-selection-input:nth-child(1) .price-selection-input-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.price-selection-input:nth-child(2) .price-selection-input-control {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.price-selection-input-control {
+    width: 143px;
+    font-weight: 700;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.price-selection {
+    display: flex;
+    flex-direction: column;
+    row-gap: 36px;
+}
+
+.price-selection-slider {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.price-selection-slider-bar {
+    width: 100%;
+    height: 4px;
+    background-color: var(--color-gray-3);
+}
+
+.price-selection-slider-thumb {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    height: 100%;
+    background-color: var(---color-light);
+}
+
+.price-selection-slider-button {
+    width: 20px;
+    height: 20px;
+    background-color: var(---color-light);
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.price-selection-slider-button:hover {
+    background-color: var(--color-blue);
 }
